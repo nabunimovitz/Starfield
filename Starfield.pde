@@ -6,9 +6,10 @@ void setup()
 	stars = new Particle[200];
 	for(int i=0; i<stars.length; i++)
 	{
-		stars[i] = new NormalParticle(250,150);
+		stars[i] = new NormalParticle();
 	}
 	stars[0] = new OddballParticle();
+	stars[1] = new JumboParticle();
 }
 void draw()
 {
@@ -24,16 +25,21 @@ void draw()
 	rect(0,450,500,20);
 	rect(125,350,15,150);
 	rect(375,350,15,150);
-	//arc(250,400,250,250,0,);
+	noFill();
+	stroke(255,0,0);
+	strokeWeight(3);
+	arc(250,350,250,220,0,PI);
+
+	noStroke();
 }
 class NormalParticle implements Particle
 {
 	int myColor;
 	double myX, myY, dAngle, dSpeed;
-	NormalParticle(double x, double y) 
+	NormalParticle() 
 	{
-		myX=x;
-		myY=y;
+		myX=250;
+		myY=150;
 
 		int red = (int)(Math.random()*256);
 		int green = (int)(Math.random()*256);
@@ -53,19 +59,17 @@ class NormalParticle implements Particle
 	public void show()
 	{
 		fill(myColor);
-		ellipse((float)myX, (float)myY, 5,5);
+		ellipse((float)myX, (float)myY, 4,4);
 	}
 
 }
 interface Particle
 {
-	//your code here
 	public void show();
 	public void move();
 }
 class OddballParticle implements Particle
 {
-	//your code here
 	int oddX;
 	OddballParticle()
 	{
@@ -80,14 +84,19 @@ class OddballParticle implements Particle
 	public void show()
 	{
 		fill(255);
-		rect(oddX,440,15,10);
-		rect(oddX+15,445,5,5);
-		fill(192,192,192);
-		ellipse(oddX+5,447,5,5);
+		rect(oddX,436,15,10);
+		rect(oddX+15,441,5,5);
+		fill(105);
+		ellipse(oddX+5,448,5,5);
+		ellipse(oddX+15,448,5,5);
 	}
 }
-class JumboParticle //uses inheritance
+class JumboParticle extends NormalParticle
 {
-	//your code here
+	public void show()
+	{
+		fill(myColor);
+		ellipse((float)myX, (float)myY, 15,15);
+	}
 }
 
