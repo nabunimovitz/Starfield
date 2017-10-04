@@ -20,18 +20,28 @@ void draw()
 		stars[i].show();
 	}
 
+	//bridge
 	fill(255,0,0);
 	noStroke();
-	rect(0,450,500,20);
-	rect(125,350,15,150);
-	rect(375,350,15,150);
+	rect(0,450,500,20); //horizontal beam
+	rect(125,345,15,155);
+	rect(375,345,15,155);
 	noFill();
 	stroke(255,0,0);
 	strokeWeight(3);
-	arc(250,350,250,220,0,PI);
+	arc(257,350,235,200,0,PI); //middle arc
+	arc(7,350,235,200,0,PI); //left arc
+	arc(507,350,235,200,0,PI); //right arc
+
+	//water
+	fill(0,0,255);
+	noStroke();
+	rect(0,490,500,10);
 
 	noStroke();
 }
+
+
 class NormalParticle implements Particle
 {
 	int myColor;
@@ -79,6 +89,9 @@ class OddballParticle implements Particle
 	public void move()
 	{
 		oddX = oddX+1;
+
+		if(oddX > 700)
+			oddX=0;
 	}
 
 	public void show()
