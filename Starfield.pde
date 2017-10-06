@@ -38,9 +38,14 @@ void draw()
 	noStroke();
 	rect(0,490,500,10);
 
+	//moon
+	fill(255);
+	ellipse(50,50,50,50);
+	fill(0);
+	ellipse(60,45,50,50);
+
 	noStroke();
 }
-
 
 class NormalParticle implements Particle
 {
